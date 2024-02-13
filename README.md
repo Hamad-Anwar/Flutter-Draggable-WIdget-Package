@@ -17,7 +17,7 @@ To integrate **draggable_widget** into your Flutter project, add the package to 
 ## Usage
 ```yaml
 dependencies:
-  draggable_widget: ^latest_version
+  flutter_draggable_widget: ^latest_version
 
 ```dart
 import 'package:draggable_widget/draggable_widget.dart';
