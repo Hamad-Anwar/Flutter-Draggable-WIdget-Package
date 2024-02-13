@@ -9,7 +9,8 @@ The **draggable_widget** package empowers Flutter developers to effortlessly mak
 - Simple and intuitive API for easy integration.
 
 ## Demo
-Check out the package in action with this [Demo GIF](link/to/video/on/YouTube).
+Check out the package in action with this.
+![Preview GIF](gif.gif)
 
 ## Installation
 To integrate **draggable_widget** into your Flutter project, add the package to your `pubspec.yaml` file:
