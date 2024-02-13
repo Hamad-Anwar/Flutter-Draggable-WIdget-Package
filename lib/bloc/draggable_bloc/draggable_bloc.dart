@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import 'package:draggable_widget/bloc/draggable_bloc/draggable_event.dart';
-import 'package:draggable_widget/bloc/draggable_bloc/draggable_state.dart';
-import 'package:flutter/material.dart';
 
+import 'package:flutter/material.dart';
 import '../../draggable_widget.dart';
+import 'draggable_event.dart';
+import 'draggable_state.dart';
 /// DraggableBloc responsible for managing the state of the draggable widget.
 class DraggableBloc extends Bloc<DraggableEvent, DraggableState> {
   final InitialPosition initialPosition;
