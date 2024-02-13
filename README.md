@@ -1,39 +1,67 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+draggable_widget
+Make any widget draggable in your Flutter app with ease!
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Drag and drop any widget effortlessly.
+Customize initial position with various options (center, topCenter, leftCenter, rightCenter, bottomCenter, topRightCorner, bottomRightCorner, topLeftCorner, bottomLeftCorner, or custom).
+Adjust drag speed to control movement fluidity.
+Simple and intuitive API for easy integration.
+## Demo
 
-## Getting started
+Demo GIF: link/to/video/on/YouTube
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+## Installation
 
+Add the package to your pubspec.yaml file:
+
+YAML
+dependencies:
+  draggable_widget: ^latest_version
+Use code with caution.
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Import the package:
+Dart
+import 'package:draggable_widget/draggable_widget.dart';
+Use code with caution.
+Wrap the widget you want to make draggable with the DraggableWidget:
+Dart
+DraggableWidget(
+  height: 100,
+  width: 100,
+  dragSpeed: 3,
+  initialPosition: InitialPosition.topCenter,
+  widget: Container(
+    // Your widget here
+  ),
+)
+Use code with caution.
+## Customization
 
-```dart
-const like = 'sample';
-```
+height: The height of the draggable widget.
+width: The width of the draggable widget.
+dragSpeed: The speed at which the widget moves when dragged (default: 3).
+initialPosition: Sets the initial position of the widget:
+InitialPosition.center
+InitialPosition.topCenter
+InitialPosition.leftCenter
+InitialPosition.rightCenter
+InitialPosition.bottomCenter
+InitialPosition.topRightCorner
+InitialPosition.bottomRightCorner
+InitialPosition.topLeftCorner
+InitialPosition.bottomLeftCorner
+InitialPosition.custom(left, top): Specify custom coordinates.
+## Additional Information
 
-## Additional information
+License: MIT
+Github Repository: [[invalid URL removed]]([invalid URL removed])
+## Contributions
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Feel free to contribute to this package! Check out the contribution guidelines in the repository.
+
+## Feedback
+
+I'd love to hear your feedback and suggestions! Please create an issue on GitHub if you have any.
+
