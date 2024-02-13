@@ -3,22 +3,18 @@
 The **draggable_widget** package empowers Flutter developers to effortlessly make any widget draggable within their applications, providing them with a seamless and customizable drag-and-drop experience.
 
 ## Features
-
 - Drag and drop any widget with ease.
 - Customize initial position using various options such as center, topCenter, leftCenter, rightCenter, bottomCenter, topRightCorner, bottomRightCorner, topLeftCorner, bottomLeftCorner, or custom coordinates.
 - Adjust drag speed to control movement fluidity.
 - Simple and intuitive API for easy integration.
 
 ## Demo
-
 Check out the package in action with this [Demo GIF](link/to/video/on/YouTube).
 
 ## Installation
-
 To integrate **draggable_widget** into your Flutter project, add the package to your `pubspec.yaml` file:
 
 ## Usage
-
 ```yaml
 dependencies:
   draggable_widget: ^latest_version
@@ -38,20 +34,19 @@ DraggableWidget(
 ## Customization
 height: Specifies the height of the draggable widget.
 width: Specifies the width of the draggable widget.
+dragSpeed: Controls the speed at which the widget moves when dragged (default: 3).
+initialPosition: Sets the initial position of the widget. Options include:
+- InitialPosition.center
+- InitialPosition.topCenter
+- InitialPosition.leftCenter
+- InitialPosition.rightCenter
+- InitialPosition.bottomCenter
+- InitialPosition.topRightCorner
+- InitialPosition.bottomRightCorner
+- InitialPosition.topLeftCorner
+- InitialPosition.bottomLeftCorner
+- InitialPosition.custom(left, top): Specify custom coordinates.
 
--dragSpeed: Controls the speed at which the widget moves when dragged (default: 3).
--initialPosition: Sets the initial position of the widget. Options include:
--InitialPosition.center
--InitialPosition.topCenter
--InitialPosition.leftCenter
--InitialPosition.rightCenter
---InitialPosition.bottomCenter
--InitialPosition.topRightCorner
--InitialPosition.bottomRightCorner
--InitialPosition.topLeftCorner
--InitialPosition.bottomLeftCorner
--InitialPosition.custom(left, top): Specify custom coordinates.
--Additional Information
 
 ## License: MIT
 
