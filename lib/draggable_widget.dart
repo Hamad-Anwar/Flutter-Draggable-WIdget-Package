@@ -1,11 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'bloc/draggable_bloc/draggable_bloc.dart';
 import 'bloc/draggable_bloc/draggable_event.dart';
 import 'bloc/draggable_bloc/draggable_state.dart';
-
 
 class DraggableWidget extends StatelessWidget {
   final Widget widget;
@@ -25,16 +23,16 @@ class DraggableWidget extends StatelessWidget {
   ///  - initialPosition: the initial position of the draggable widget.
   ///  - left: optional left position for custom initial position.
   ///  - top: optional top position for custom initial position.
-  DraggableWidget(
-      {Key? key,
-      required this.widget,
-      required this.initialPosition,
-      required this.height,
-      required this.width,
-      this.dragSpeed = 2.0,
-      this.left,
-      this.top,})
-      : super(key: key) {
+  DraggableWidget({
+    Key? key,
+    required this.widget,
+    required this.initialPosition,
+    required this.height,
+    required this.width,
+    this.dragSpeed = 2.0,
+    this.left,
+    this.top,
+  }) : super(key: key) {
     _validateInput();
   }
 
@@ -57,57 +55,59 @@ class DraggableWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => DraggableBloc(
-        context: context,
-        height: height,
-        initialPosition: initialPosition,
-        widget: widget,
-        width: width,
-        left: left,
-        top: top,
-      ),
-      child: Builder(
-        builder: (context) {
-          return LayoutBuilder(
-            builder: (context, constraints) {
-              return Overlay(
-                initialEntries: [
-                  OverlayEntry(
-                    builder: (context) {
-                      return BlocBuilder<DraggableBloc, DraggableState>(
-                        builder: (context, state) {
-                          return _buildPositioned(context, constraints, state);
-                        },
-                      );
-                    },
-                  )
-                ],
-              );
-            },
-          );
-        },
-      ),
+    return SafeArea(
+      child: BlocProvider(
+          create: (_) => DraggableBloc(
+                context: context,
+                height: height,
+                initialPosition: initialPosition,
+                widget: widget,
+                width: width,
+                left: left,
+                top: top,
+              ),
+          child: SizedBox(
+            height: MediaQuery.sizeOf(context).height -
+                MediaQuery.of(context).padding.top,
+            width: MediaQuery.sizeOf(context).width,
+            child: Builder(
+              builder: (context) {
+                return Overlay(
+                  initialEntries: [
+                    OverlayEntry(
+                      builder: (context) {
+                        return BlocBuilder<DraggableBloc, DraggableState>(
+                          builder: (context, state) {
+                            return _buildPositioned(context, state);
+                          },
+                        );
+                      },
+                    )
+                  ],
+                );
+              },
+            ),
+          )),
     );
   }
 
   /// Builds the Positioned widget.
-  Widget _buildPositioned(
-      BuildContext context, BoxConstraints constraints, DraggableState state) {
+  Widget _buildPositioned(BuildContext context, DraggableState state) {
+    var height =
+        MediaQuery.sizeOf(context).height - MediaQuery.of(context).padding.top;
+    var width = MediaQuery.sizeOf(context).width;
     return Positioned(
       /// Set position of the widget with the constrains
-      top: _getVerticalPosition(state.top, constraints.maxHeight),
-      left: _getBoundedPosition(state.left, constraints.maxWidth),
+      top: _getVerticalPosition(state.top, height-AppBar().preferredSize.height),
+      left: _getBoundedPosition(state.left, width),
       child: GestureDetector(
         onPanUpdate: (details) {
           context.read<DraggableBloc>().add(
                 DragEvent(
                   top: _getVerticalPosition(
-                      state.top + details.delta.dy * dragSpeed,
-                      constraints.maxHeight),
+                      state.top + details.delta.dy * dragSpeed, height-AppBar().preferredSize.height),
                   left: _getBoundedPosition(
-                      state.left + details.delta.dx * dragSpeed,
-                      constraints.maxWidth),
+                      state.left + details.delta.dx * dragSpeed, width),
                 ),
               );
         },
@@ -126,6 +126,7 @@ class DraggableWidget extends StatelessWidget {
     return max(0, min(value, maxValue - height));
   }
 }
+
 /// Enum defining initial positions for the draggable widget.
 enum InitialPosition {
   center,

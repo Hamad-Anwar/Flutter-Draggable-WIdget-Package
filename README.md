@@ -10,7 +10,7 @@ The **draggable_widget** package empowers Flutter developers to effortlessly mak
 
 ## Demo
 Check out the package in action with this.
-![Preview GIF](gif.gif)
+![Preview GIF](demo.gif)
 
 ## Installation
 To integrate **draggable_widget** into your Flutter project, add the package to your `pubspec.yaml` file:

@@ -1,3 +1,4 @@
+
 import 'package:bloc/bloc.dart';
 
 import 'package:flutter/material.dart';
@@ -41,6 +42,7 @@ class DraggableBloc extends Bloc<DraggableEvent, DraggableState> {
   void _initializeEventListeners() {
     on<InitialPositionEvent>(_setInitialPosition);
     on<DragEvent>(_onDragEvent);
+    on<ScreenOrientationEvent>(_orientationChangeEvent);
   }
 
 
@@ -48,15 +50,22 @@ class DraggableBloc extends Bloc<DraggableEvent, DraggableState> {
   void _onDragEvent(DragEvent event, Emitter<DraggableState> emit) {
     emit(state.copyWith(top: event.top, left: event.left));
   }
+  /// Orientation change event
+  void _orientationChangeEvent(ScreenOrientationEvent event, Emitter<DraggableState> emit) {
+    emit(state.copyWith());
+  }
   /// Sets the initial position of the draggable widget based on the chosen initial position.
   void _setInitialPosition(InitialPositionEvent event, Emitter<DraggableState> emit) {
     final Size screenSize = MediaQuery.of(context).size;
+    final screenPadding=MediaQuery.of(context).padding.top;
+    final screenHeight=screenSize.height-screenPadding-AppBar().preferredSize.height;
     double left = 0;
     double top = 0;
+
     switch (initialPosition) {
       case InitialPosition.center:
         left = (screenSize.width - width) / 2;
-        top = (screenSize.height - height) / 2;
+        top = (screenHeight - height) / 2;
         break;
       case InitialPosition.topCenter:
         left = (screenSize.width - width) / 2;
@@ -64,15 +73,15 @@ class DraggableBloc extends Bloc<DraggableEvent, DraggableState> {
         break;
       case InitialPosition.bottomCenter:
         left = (screenSize.width - width) / 2;
-        top = screenSize.height - height;
+        top = screenHeight - height;
         break;
       case InitialPosition.leftCenter:
         left = 0;
-        top = (screenSize.height - height) / 2;
+        top = (screenHeight - height) / 2;
         break;
       case InitialPosition.rightCenter:
         left = screenSize.width - width;
-        top = (screenSize.height - height) / 2;
+        top = (screenHeight - height) / 2;
         break;
       case InitialPosition.topRightCorner:
         left = screenSize.width - width;
@@ -80,7 +89,7 @@ class DraggableBloc extends Bloc<DraggableEvent, DraggableState> {
         break;
       case InitialPosition.bottomRightCorner:
         left = screenSize.width - width;
-        top = screenSize.height - height;
+        top = screenHeight - height;
         break;
       case InitialPosition.topLeftCorner:
         left = 0;
@@ -88,7 +97,7 @@ class DraggableBloc extends Bloc<DraggableEvent, DraggableState> {
         break;
       case InitialPosition.bottomLeftCorner:
         left = 0;
-        top = screenSize.height - height;
+        top = screenHeight - height;
         break;
       case InitialPosition.custom:
         left = this.left!;
@@ -97,8 +106,7 @@ class DraggableBloc extends Bloc<DraggableEvent, DraggableState> {
       default:
         break;
     }
-
-    emit(state.copyWith(top: top, left: left));
+    emit(state.copyWith(top: top-30, left: left));
   }
 }
 

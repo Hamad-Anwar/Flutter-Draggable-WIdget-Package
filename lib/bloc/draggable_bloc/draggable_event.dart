@@ -4,6 +4,7 @@ abstract class DraggableEvent extends Equatable{
   List<Object> get props=>[];
 }
 class InitialPositionEvent extends DraggableEvent{}
+class ScreenOrientationEvent extends DraggableEvent{}
 class ChangeDraggingState extends DraggableEvent{
   final bool isDragging;
   ChangeDraggingState({required this.isDragging});
@@ -17,3 +18,5 @@ class DragEvent extends DraggableEvent{
   @override
   List<Object> get props=>[top,left];
 }
+
+

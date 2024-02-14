@@ -1,4 +1,3 @@
-import 'package:draggable_widget/draggable_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_draggable_widget/draggable_widget.dart';
 void main() {
@@ -18,23 +17,22 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
           body: SafeArea(
-            child: Column(
-              children: [
-                DraggableWidget(widget: Container(
-                  height: height,
-                  width: width,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10)
+              child: Column(
+                children: [
+                  DraggableWidget(widget: Container(
+                    height: height,
+                    width: width,
+                    decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(10)
+                    ),
                   ),
-                ),
-                    initialPosition: InitialPosition.center, height: height, width: width),
-                /// other widgets
-              ],
-            )
+                      initialPosition: InitialPosition.center, height: height, width: width),
+                  /// other widgets
+                ],
+              )
           ),
         )
     );
   }
 }
-
