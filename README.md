@@ -1,15 +1,14 @@
-# Draggable Widget
+# Flutter Draggable Widget
 
-The **draggable_widget** package empowers Flutter developers to effortlessly make any widget draggable within their applications, providing them with a seamless and customizable drag-and-drop experience.
+The **flutter_draggable_widget** package empowers Flutter developers to effortlessly make any widget draggable within their applications, providing them with a seamless and customizable drag-and-drop experience.
 
 ## Features
 - Drag and drop any widget with ease.
 - Customize initial position using various options such as center, topCenter, leftCenter, rightCenter, bottomCenter, topRightCorner, bottomRightCorner, topLeftCorner, bottomLeftCorner, or custom coordinates.
 - Adjust drag speed to control movement fluidity.
-- Simple and intuitive API for easy integration.
 
 ## Demo
-Check out the package in action with this.
+
 ![Preview GIF](demo.gif)
 
 ## Installation
@@ -47,7 +46,6 @@ initialPosition: Sets the initial position of the widget. Options include:
 - InitialPosition.topLeftCorner
 - InitialPosition.bottomLeftCorner
 - InitialPosition.custom(left, top): Specify custom coordinates.
-
 
 ## License: MIT
 
